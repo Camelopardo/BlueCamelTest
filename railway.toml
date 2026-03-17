@@ -3,7 +3,7 @@ builder = "DOCKERFILE"
 dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "cat > /data/settings.js << 'EOF'\nmodule.exports = {\n    flowFile: 'flows.json',\n    flowFilePretty: true,\n    credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET || 'default-secret',\n    adminAuth: {\n        type: 'credentials',\n        users: [{\n            username: process.env.NODE_RED_USERNAME || 'admin',\n            password: process.env.NODE_RED_PASSWORD_HASH,\n            permissions: '*'\n        }]\n    },\n    uiPort: process.env.PORT || 1880,\n    diagnostics: { enabled: true, ui: true },\n    runtimeState: { enabled: false, ui: false },\n    logging: { console: { level: 'info', metrics: false, audit: false } },\n    exportGlobalContextKeys: false,\n    externalModules: {},\n    editorTheme: { projects: { enabled: false } },\n    functionExternalModules: true,\n    globalFunctionTimeout: 0,\n    functionTimeout: 0,\n    functionGlobalContext: {},\n    debugMaxLength: 1000,\n    mqttReconnectTime: 15000,\n    serialReconnectTime: 15000,\n}\nEOF\nnpm start --cache /data/.npm -- --userDir /data"
+startCommand = "npm start --cache /data/.npm -- --userDir /data"
 healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
